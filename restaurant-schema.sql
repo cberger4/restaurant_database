@@ -1,10 +1,3 @@
-/*
-Chris Berger, Paige Bonvallet, James Morgan, Ed Lacinski
-Restaurant Database
-Final Project
-CSC 4480
-*/
-
 DROP TABLE CUSTOMER CASCADE CONSTRAINTS;
 DROP TABLE SERVER CASCADE CONSTRAINTS;
 DROP TABLE MEAL CASCADE CONSTRAINTS;
@@ -17,7 +10,7 @@ DROP SEQUENCE seqKID;
 CREATE TABLE CUSTOMER(
     CustomerID      Int           NOT NULL,
     TableNo         Int           NOT NULL,
-    Allergies       VarChar(100)  NULL,
+    SID             INT           NOT NULL,
     Position        VarChar(20)   NOT NULL,
     COVID_Status    VarChar(20)   NULL,
     CONSTRAINT      CustomerID_PK   PRIMARY KEY(CustomerID)
@@ -30,11 +23,22 @@ CREATE TABLE SERVER(
     CustomerID      Int         NOT NULL,
     Tip_Value       Int         NULL,
     Subtotal        Int         NULL,
-    CONSTRAINT      ServerID_PK     PRIMARY KEY(ServerID),
+    PRIMARY KEY(ServerID),
     CONSTRAINT      SERV_CUSTOMER_FK     FOREIGN KEY(CustomerID)
                                 REFERENCES CUSTOMER(CustomerID)
     );
-    
+ALTER TABLE CUSTOMER ADD (
+  foreign key (SID) references SERVER(ServerID)
+);
+
+DROP TABLE ASSIGN CASCADE CONSTRAINTS;
+CREATE TABLE assign (
+  CID   int not null,
+  SID    int not null,
+  primary key (CID,SID),
+  foreign key (CID) references Customer(CustomerID),
+  foreign key (SID) references SERVER(ServerID)
+);
 CREATE SEQUENCE seqSID INCREMENT BY 1 START WITH 1;
 
 CREATE TABLE MEAL(
@@ -61,4 +65,3 @@ CREATE TABLE KITCHEN(
     );
     
 CREATE SEQUENCE seqKID INCREMENT BY 1 START WITH 1;
-    
