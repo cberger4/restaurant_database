@@ -13,7 +13,7 @@ CREATE TABLE party(
     custid INT not null,
     SID INT NOT Null,
     PRIMARY KEY(tableno),
-    FOREIgN KEY(custid) references CUSTOMER(CustomerID)
+    FOREIGN KEY(custid) references CUSTOMER(CustomerID)
     --FOREIGN KEY(SID) references SERVER(serverID)
     );
 
