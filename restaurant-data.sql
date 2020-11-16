@@ -1,4 +1,4 @@
--- James Morgan
+-- James Morgan,Ed Lacinski
 
 DELETE FROM CUSTOMER;
 --Table 1
