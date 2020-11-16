@@ -10,40 +10,46 @@ drop table party cascade constraints;
 CREATE TABLE party(
     grpno    INT NOT NULL,
     tablenum INT not null,
-    PRIMARY KEY(grpno)
+    SID INT NOT Null,
+    PRIMARY KEY(grpno),
+    FOREIgN KEY(tablenum) references CUSTOMER(CustomerID)
+    --FOREIGN KEY(SID) references SERVER(serverID)
     );
 
 DROP TABLE SERVER CASCADE CONSTRAINTS;
 CREATE TABLE SERVER(
     serverID int not null,
-    tabnum int not null,
     firstname varchar(13),
     lastname varchar(13),
-    primary key(ServerID),
-    foreign key(tabnum) references PARTY(grpno)
+    primary key(ServerID)
     );
     
 ALTER TABLE PARTY ADD (
-  foreign key (tablenum) references SERVER(ServerID)
+  FOREIGN KEY(SID) references SERVER(serverID)
 );
 
 drop table receipt cascade constraints;
 CREATE TABLE receipt(
-    chit int not null,
+    chit_id int not null,
     CID int not null,
-    menu_ID int not null,
-    primary key(chit),
+    menu_item int not null,
+    primary key(chit_id),
     foreign key(CID) references CUSTOMER(customerID)
+    ---foreign key (menu_item) references MENU(menu_ID)
     );
-    
+DROP SEQUENCE seqCID;
+CREATE SEQUENCE seqCID INCREMENT BY 1 START WITH 1;
 drop table menu cascade constraints;
 CREATE TABLE MENU(
-    menu_ID int null,
-    drink_ID int null,
-    side_ID int null,
-    menu_name int not null,
-    price int not null,
-    quantity int not null,
+    menu_ID int not null,
+    menu_name varChar(30) not null,
+    price FLOAT(5) not null,
     primary key(menu_ID)
     );
+    
+ALTER TABLE receipt ADD (
+  foreign key (menu_item) references MENU(menu_ID)
+);
+    
+
 
