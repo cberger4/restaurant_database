@@ -4,18 +4,22 @@ CREATE TABLE CUSTOMER(
     TableNo         Int             NOT NULL,
     Position        VarChar(20)     NOT NULL,
     PRIMARY KEY(CustomerID)
+    --FOREIGN KEY(tableno) references party(tableno)
     );
-    
+
 drop table party cascade constraints;
 CREATE TABLE party(
-    grpno    INT NOT NULL,
-    tablenum INT not null,
+    tableno    INT NOT NULL,
+    custid INT not null,
     SID INT NOT Null,
-    PRIMARY KEY(grpno),
-    FOREIgN KEY(tablenum) references CUSTOMER(CustomerID)
+    PRIMARY KEY(tableno),
+    FOREIgN KEY(custid) references CUSTOMER(CustomerID)
     --FOREIGN KEY(SID) references SERVER(serverID)
     );
 
+ALTER TABLE Customer ADD (
+  FOREIGN KEY(tableno) references party(tableno)
+);
 DROP TABLE SERVER CASCADE CONSTRAINTS;
 CREATE TABLE SERVER(
     serverID int not null,
@@ -23,7 +27,7 @@ CREATE TABLE SERVER(
     lastname varchar(13),
     primary key(ServerID)
     );
-    
+
 ALTER TABLE PARTY ADD (
   FOREIGN KEY(SID) references SERVER(serverID)
 );
@@ -46,10 +50,7 @@ CREATE TABLE MENU(
     price FLOAT(5) not null,
     primary key(menu_ID)
     );
-    
+
 ALTER TABLE receipt ADD (
   foreign key (menu_item) references MENU(menu_ID)
 );
-    
-
-
