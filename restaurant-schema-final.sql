@@ -1,3 +1,5 @@
+-- James Morgan, Christian Berger, Ed Lacinski, Paige Bonvallet
+
 DROP TABLE CUSTOMER CASCADE CONSTRAINTS;
 CREATE TABLE CUSTOMER(
     CustomerID      Int             NOT NULL,
@@ -11,11 +13,12 @@ CREATE TABLE party(
     tableno    INT NOT NULL,
     SID INT NOT Null,
     PRIMARY KEY(tableno)
-    --FOREIGN KEY(SID) references SERVER(serverID)
     );
+    
 ALTER TABLE CUSTOMER ADD(
 FOREIGN KEY(tableno) references PARTY(tableno)
 );
+
 DROP TABLE SERVER CASCADE CONSTRAINTS;
 CREATE TABLE SERVER(
     serverID int not null,

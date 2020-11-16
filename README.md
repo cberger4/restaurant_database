@@ -14,4 +14,5 @@
 
 ### How to use:
 
-* First run the restaurant-schema.sql and then restaurant-data.sql in an sql environment such as Oracle SQLDeveloper
+* First run the restaurant-schema-final.sql and then restaurant-data-final.sql in an sql environment such as Oracle SQLDeveloper.
+* Run sample queries given in restaurant-query.sql or create your own!
