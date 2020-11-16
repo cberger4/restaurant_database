@@ -10,3 +10,7 @@
 * Server
 * Meal
 * Kitchen
+
+### How to use:
+
+* First run the restaurant-schema.sql and then restaurant-data.sql in an sql environment such as Oracle SQLDeveloper
