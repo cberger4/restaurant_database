@@ -14,7 +14,7 @@ INSERT INTO MENU VALUES (10, 'Lemon Butter Scallops', 23);
 -- SERVERS
 INSERT INTO SERVER VALUES (1, 'Jason', 'Scott');
 
-INSERT INTO SERVER VALUES (2, 'Kimberly', 'HART');
+INSERT INTO SERVER VALUES (2, 'Kimberly', 'Hart');
 
 INSERT INTO SERVER VALUES (3, 'Zack', 'Taylor');
 

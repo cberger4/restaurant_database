@@ -9,7 +9,8 @@
 * Customer
 * Server
 * Meal
-* Kitchen
+* Party
+* Receipt
 
 ### How to use:
 
